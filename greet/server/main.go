@@ -25,10 +25,14 @@ func main() {
 
 	println("Server listening at", addr)
 	s:= grpc.NewServer();
+	pb.RegisterGreetServiceServer(s, &Server{});
+
 
 	if err = s.Serve(lis); err != nil {
 		 fmt.Println("Failed to serve:", err)
 	}
+
+	
 
 	
 
